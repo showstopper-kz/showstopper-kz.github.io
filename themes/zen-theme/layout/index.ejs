@@ -1,0 +1,78 @@
+<div class="matrix-div">
+	<pre id="http-connect"></pre>
+</div>
+
+<script>
+  var connectElement = document.getElementById('http-connect');
+
+  function createCustomTimeout(millsecond) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('bla bla');
+      resolve();
+    }, millsecond);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", async function() {
+    var words = ["C", "O", "N", "N", "E", "C", "T", " ", "w", "w", "w", ".", "b", "a", "i", "d", "u", ".", "c", "o", "m", ":", "4", "4", "3", " ", "H", "T", "T", "P", "/", "1", ".", "1", "\\r", "\\n", "\n",
+				]
+;
+	let userAgent = navigator.userAgent.substr(0, 30) + "...";
+	let agent = "User-Agent: " + userAgent + "\\r\\n\n";
+	append(words, agent);
+
+	append(words, "Host: www.baidu.com:443\\r\\n\n");
+    var delay = 100; 
+
+	append(words, "X-Forwarded-For: 127.0.0.1\\r\\n\n");
+
+    async function showWord(index, words) {
+      if (index < words.length) {
+        connectElement.textContent += words[index];
+        await createCustomTimeout(delay);
+        await showWord(index + 1, words);
+      }
+    }
+
+    await showWord(0, words);
+    await startSpinner();
+
+    var res = [];
+    append(res, "\n")
+    append(res, "HTTP/1.1 200 Connection established\\r\\n\n")
+    append(res, "Welcome to Kirin's home !!!")
+    await showWord(0, res);
+  });
+
+  	function append(words, str) {
+		for (var i = 0; i < str.length; i++) {
+			var letter = str.charAt(i);
+			words.push(letter);
+		}
+		
+  	}
+
+
+var spinner = null;
+
+async function startSpinner() {
+	spinner = document.createElement('span');
+  spinner.textContent = '|';
+  spinner.classList.add('spinner');
+  console.log(spinner.classList);
+  connectElement.appendChild(spinner);
+  await createCustomTimeout(2000);
+  stopSpinner();
+}
+
+
+function stopSpinner() {
+		console.log(spinner);
+  if (spinner) {
+    console.log(spinner.classList)
+    connectElement.removeChild(spinner);
+    spinner = null;
+  }
+}
+</script>

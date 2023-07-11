@@ -1,0 +1,70 @@
+header nav a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+	display: flex;
+    justify-content: space-between;
+}
+
+header nav a:hover {
+    color: #6f00ff;
+}
+
+header {
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+    border: 2px solid purple;
+}
+
+.header-link {
+    display: inline-block;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+body {
+    width: calc(40.33% - 2px);
+    margin: 0 auto;
+    border: 2px solid blue;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    text-align: center;
+}
+
+.matrix-div {
+    background-color: black;
+    color: lime;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    padding: 20px;
+    white-space: pre;
+    overflow: auto;
+    height: 400px; /* 自定义高度 */
+}
+
+#http-connect {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinner {
+  display: inline-block;
+  animation: spin 2s infinite linear;
+}
