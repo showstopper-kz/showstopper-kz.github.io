@@ -7,31 +7,42 @@
 
         fetch('/api/articles')
         .then(function(response) {
-        return response.json();
+            return response.json();
         })
         .then(function(data) {
-            data.forEach(function(article) {
-                var li = document.createElement('li');
-                var title = document.createElement('a');
-                title.href = article.url;
-                title.textContent = article.title;
-                li.appendChild(title);
+            console.log(data)
+            var years = Object.keys(data);
 
-                var hr = document.createElement('hr');
-                var hrWrapper = document.createElement('div');
-                hrWrapper.appendChild(hr);
-                li.appendChild(hrWrapper);
+            years.forEach(function(year) {
+                var yearHeading = document.createElement('h2');
+                yearHeading.textContent = year;
+                articleList.appendChild(yearHeading);
 
-                var date = document.createElement('span');
-                date.textContent = article.date;
-                date.classList.add('date');
-                li.appendChild(date);
+                var articles = data[year];
 
-                articleList.appendChild(li);
-                    
-                var lineWidth = li.offsetWidth - title.offsetWidth - date.offsetWidth;
-                hr.style.width = lineWidth + 'px';
-                hrWrapper.style.width = lineWidth + 'px';
+                articles.forEach(function(article) {
+                    var li = document.createElement('li');
+                    var title = document.createElement('a');
+                    title.href = article.url;
+                    title.textContent = article.title;
+                    li.appendChild(title);
+
+                    var hr = document.createElement('hr');
+                    var hrWrapper = document.createElement('div');
+                    hrWrapper.appendChild(hr);
+                    li.appendChild(hrWrapper);
+
+                    var date = document.createElement('span');
+                    date.textContent = article.date;
+                    date.classList.add('date');
+                    li.appendChild(date);
+
+                    articleList.appendChild(li);
+                        
+                    var lineWidth = li.offsetWidth - title.offsetWidth - date.offsetWidth;
+                    hr.style.width = lineWidth + 'px';
+                    hrWrapper.style.width = lineWidth + 'px';
+                });
             });
         })
         .catch(function(error) {
