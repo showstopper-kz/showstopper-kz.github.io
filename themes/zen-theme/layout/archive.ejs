@@ -1,0 +1,43 @@
+<div></div>
+<ul id="article-list"></ul>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var articleList = document.getElementById('article-list');
+
+        fetch('/api/articles')
+        .then(function(response) {
+        return response.json();
+        })
+        .then(function(data) {
+            data.forEach(function(article) {
+                var li = document.createElement('li');
+                var title = document.createElement('a');
+                title.href = article.url;
+                title.textContent = article.title;
+                li.appendChild(title);
+
+                var hr = document.createElement('hr');
+                var hrWrapper = document.createElement('div');
+                hrWrapper.appendChild(hr);
+                li.appendChild(hrWrapper);
+
+                var date = document.createElement('span');
+                date.textContent = article.date;
+                date.classList.add('date');
+                li.appendChild(date);
+
+                articleList.appendChild(li);
+                    
+                var lineWidth = li.offsetWidth - title.offsetWidth - date.offsetWidth;
+                hr.style.width = lineWidth + 'px';
+                hrWrapper.style.width = lineWidth + 'px';
+            });
+        })
+        .catch(function(error) {
+            console.error('Error fetching articles:', error);
+        });
+    });
+
+</script>
+

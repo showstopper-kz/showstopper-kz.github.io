@@ -1,2 +1,24 @@
 <link rel="stylesheet" href="/css/style.css">
-<footer>Built By ChatGPT</footer>
+<footer id="page-footer" ></footer>
+
+<script>
+    function setBody() {
+        var contentHeight = document.documentElement.scrollHeight ;
+        console.log(contentHeight)
+        var windowHeight = window.innerHeight;
+        console.log(windowHeight)
+
+        var footer = document.getElementById('page-footer');
+
+        if (window.location.href.includes('archive')) {
+            footer.style.position = 'relative'
+            footer.textContent = 'Built by ChatGPT'
+        } else {
+            footer.style.position = 'fixed'
+            footer.textContent = 'Built by ChatGPT'
+        }
+
+    }
+
+     setBody()
+</script>

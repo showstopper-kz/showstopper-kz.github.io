@@ -34,11 +34,15 @@ body {
 }
 
 footer {
-    position: fixed;
+    position: relative;
     left: 0;
     right: 0;
     bottom: 20px;
     text-align: center;
+}
+
+.hidden {
+    display: none;
 }
 
 .matrix-div {
@@ -67,4 +71,40 @@ footer {
 .spinner {
   display: inline-block;
   animation: spin 2s infinite linear;
+}
+
+#article-list {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#article-list li {
+    margin-bottom: 5px;
+    position: relative;
+    display: flex; /* 使用 flexbox 布局 */
+    align-items: center; /* 垂直居中对齐 */
+}
+
+#article-list li a {
+    border: 1px solid blue;
+    text-decoration: none;
+    flex-grow: 0.2; 
+}
+
+#article-list li .date {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#article-list li hr {
+    border: none;
+    border-top: 1px dashed #000;
+    margin: 0;
+    flex-grow: 1; /* 横线自动拉伸填充剩余空间 */
+}
+
+#article-list li div {
+    flex-grow: 1;
+    display: flex; /* 使用 flexbox 布局 */
+    align-items: center; /* 水平居中对齐 */
 }
