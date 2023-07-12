@@ -1,2 +1,19 @@
-<link rel="stylesheet" href="/css/style.css">
-<footer id="page-footer" >footer</footer>
+<footer id="page-footer" >
+	<p>fotter</p>
+	<div id="current-utc-time"></div>
+</footer>
+
+  <script>
+	    function updateCurrentTime() {
+	  		var timeElement = document.getElementById('current-utc-time');
+      		var currentTime = new Date().toUTCString();
+	  		//console.log(timeElement.textContent);
+	   		timeElement.textContent = 'UTC' + currentTime;
+    	}
+
+    // 每秒更新一次时间
+	updateCurrentTime()
+    setInterval(updateCurrentTime, 1000);
+  </script>
+
+

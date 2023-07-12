@@ -1,9 +1,22 @@
+<link rel="stylesheet" href="/css/index.css">
+
 <div id="white-box"></div>
-<div class="matrix-div">
-	<pre id="http-connect"></pre>
+<div id="crt-monitor">
+  <div class="crt-screen">
+	  <pre id="http-connect"></pre>
+    <!-- 内容在 CRT 屏幕中 -->
+  </div>
 </div>
 
+
 <script>
+    window.addEventListener('DOMContentLoaded', () => {
+    const crtMonitor = document.getElementById('crt-monitor');
+    const width = crtMonitor.offsetWidth;
+    console.log(width)
+    crtMonitor.style.height = width*3 / 4 + 'px';
+  });
+
   var connectElement = document.getElementById('http-connect');
 
   function createCustomTimeout(millsecond) {
