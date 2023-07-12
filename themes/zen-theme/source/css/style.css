@@ -1,8 +1,10 @@
+@import "variable.css";
+
 header nav a {
     margin-right: 10px;
     text-decoration: none;
     color: #000;
-    font-weight: bold;
+    font-weight: normal;
 	display: flex;
     justify-content: space-between;
 }
@@ -12,10 +14,19 @@ header nav a:hover {
 }
 
 header {
-    width: 100%;
+    width: calc(40.33% - 2px);
     margin: 0 auto;
     text-align: left;
-    border: 2px solid purple;
+    position: fixed;
+    top: 0;
+    z-index: 9999; /* 可选，用于控制层级 */
+    background-color: #ffffff; /* 设置背景颜色为不透明的白色 */
+    opacity: 1; 
+    border: 2px solid blue;
+    height: var(--header-height);
+    border-bottom: 3px solid black;
+    align-items: center;
+    display: flex;
 }
 
 .header-link {
@@ -27,22 +38,34 @@ header {
     font-size: 1.5em;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     width: calc(40.33% - 2px);
+    height: 100%;
     margin: 0 auto;
     border: 2px solid blue;
 }
 
-footer {
-    position: relative;
-    left: 0;
-    right: 0;
-    bottom: 20px;
+.content {
+    min-height: calc(100% - 40px);
+    padding-bottom: 0px;
+}
+
+#page-footer {
+    position: sticky;
+    height: 40px;
     text-align: center;
 }
 
 .hidden {
     display: none;
+}
+
+#white-box {
+    height: calc(var(--header-height) + 10px);
 }
 
 .matrix-div {
@@ -74,8 +97,8 @@ footer {
 }
 
 #article-list {
-    margin-top: 50px;
     margin-bottom: 50px;
+    padding: 10px;
 }
 
 #article-list li {
@@ -83,6 +106,8 @@ footer {
     position: relative;
     display: flex; /* 使用 flexbox 布局 */
     align-items: center; /* 垂直居中对齐 */
+    border: 1px solid blue;
+    padding: 10px;
 }
 
 #article-list li a {
@@ -92,7 +117,7 @@ footer {
 }
 
 #article-list li .date {
-    margin-left: 10px;
+    margin-left: 5px;
     margin-right: 10px;
 }
 
@@ -111,14 +136,14 @@ footer {
 
 
 #page-title {
-  font-size: 24px;
-  color: #333;
-  font-weight: bold;
-  /* 其他样式属性 */
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    /* 其他样式属性 */
 }
 
 #page-content {
-  font-size: 16px;
-  color: #666;
-  /* 其他样式属性 */
+    font-size: 16px;
+    color: #666;
+    /* 其他样式属性 */
 }

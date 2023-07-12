@@ -1,4 +1,7 @@
 <link rel="stylesheet" href="/css/post.css">
+<link rel="stylesheet" href="/css/style.css">
+
+<div id="white-box"></div>
 
 <h1 id="page-title">
 	<%- page.title %>
@@ -7,3 +10,39 @@
 <div id="page-content">
 	<%- page.content %>
 </div>
+
+<script src="https://threejs.org/build/three.js"></script>
+
+<script>
+	// 创建场景
+	var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
+      var renderer = new THREE.WebGLRenderer();
+      renderer.setSize( window.innerWidth, window.innerHeight );
+      document.body.appendChild( renderer.domElement );
+
+
+	  // 创建显示器模型
+	  const bodyGeometry = new THREE.BoxGeometry(3, 2, 2);
+  const bodyMaterials = 
+    new THREE.MeshBasicMaterial({ color: 0xff0000 }) // 右侧;
+  const body = new THREE.Mesh(bodyGeometry, bodyMaterials);
+  scene.add(body);
+
+  const screenGeometry = new THREE.BoxGeometry(2.8, 1.8, 2);
+  const screenMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff });
+  const screen = new THREE.Mesh(screenGeometry, screenMaterial);
+
+  camera.position.z = 5;
+
+
+	// 渲染场景
+	function animate() {
+	  requestAnimationFrame(animate);
+	  body.rotation.y += 0.01;
+	  screen.rotation.y += 0.01;
+
+	  renderer.render(scene, camera);
+	}
+	animate();
+  </script>
