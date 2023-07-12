@@ -1,0 +1,11 @@
+@import "variable.css";
+
+#page-footer {
+    position: sticky;
+    height: 40px;
+    text-align: center;
+}
+
+#current-utc-time {
+    overflow: auto;
+}
