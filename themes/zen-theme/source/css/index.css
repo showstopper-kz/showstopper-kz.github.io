@@ -41,7 +41,7 @@ body{
 
 #http-connect {
   margin: 0 auto;
-    font-family: 'Courier New', monospace;
+  font-family: 'Courier New', monospace;
   color: green;
   font-weight: normal;
   font-size: 20px;
@@ -58,10 +58,6 @@ body{
   animation: spin 2s infinite linear;
 }
 
-@font-face {
-  font-family: 'Elizabeth';
-  src: url('/font/Elizabeth.ttf') format('truetype');
-}
 
 
 header nav a:hover {
@@ -70,7 +66,7 @@ header nav a:hover {
 
 header {
     border: 0px solid blue;
-    height: var(--header-height);
+    height: var(--index-header-height);
     width: 100%;
 }
 
@@ -79,7 +75,7 @@ header {
     margin: 0 auto;
     top: 0;
     opacity: 1; 
-    height: var(--header-height);
+    height: var(--index-header-height);
     border-bottom: 4px solid black;
     align-items: center;
     text-align: center;
