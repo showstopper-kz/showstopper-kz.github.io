@@ -1,24 +1,42 @@
+const { marked } = require("marked");
 
-const https = require('https');
-const url = 'https://www.arduino.cc'; // 替换为你的 URL
-const cheerio = require('cheerio')
+const siteInfo = {
+      name: 'show-site-info',
+      level: 'block',
+    tokenizer(src, tokens) {
+      console.log("src: ==================== ", src)
+      console.log("end =========================")
+      const cap = /^:::\s*show-site-info\s*(.*?)\s*:::/.exec(src);
+      console.log("cap ===================== ", cap)
+//      const res = await fetch('/public/api/siteInfo')
+ //     console.log(res.json());
 
-    https.get(url, (response) => {
-        let html = '';
-      
-        response.on('data', (chunk) => {
-          html += chunk;
-        });
-      
-        response.on('end', () => {
-        const $ = cheerio.load(html);
-        const title = $('title').text();
-const iconHref = $('link[rel="icon"]').attr('href');
-const description = $('meta[name="description"]').attr('content');
-console.log(title)
-console.log(iconHref)
-console.log(description)
-        });
-      }).on('error', (error) => {
-        console.error(error);
-      });
+      if (cap !== null) {
+        const site = cap[1].trim();
+
+        return {
+          type: 'show-site-info',
+          raw: cap[0],
+          text: cap[0],
+          site: site,
+          tokens: []  
+        };
+      }
+
+      return undefined;
+    },
+    renderer(token) {
+
+      return '<a></a>';
+  }
+}
+
+marked.use({extensions: [siteInfo]})
+async function test() {
+  const str = '\ntest\n'+ '::: show-site-info\nurl\n:::\ntest\n';
+  let tokens =marked.lexer(str) 
+  console.log(tokens)
+  console.log(marked.parser(tokens))
+}
+
+test()

@@ -17,31 +17,4 @@
 
 
 <script>
-  const url = 'https://www.baidu.com'; // 替换为你的 URL
-
-  fetch(url)
-    .then(response => response.text())
-    .then(html => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(html, 'text/html');
-      
-      const title = doc.querySelector('title').innerText;
-      const description = doc.querySelector('meta[name="description"]').getAttribute('content');
-      const fqdn = new URL(url).hostname;
-      
-      const urlElement = document.getElementById('url-element');
-      urlElement.innerHTML = `
-        <div class="left-column">
-          <div class="title">${title}</div>
-          <div class="description">${description}</div>
-          <div class="fqdn">${fqdn}</div>
-        </div>
-        <div class="right-column">
-          <img src="网页图标路径" alt="网页图标">
-        </div>
-      `;
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
 </script>
