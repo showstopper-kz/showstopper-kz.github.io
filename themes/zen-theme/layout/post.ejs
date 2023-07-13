@@ -1,7 +1,8 @@
 <link rel="stylesheet" href="/css/post.css">
-<link rel="stylesheet" href="/css/style.css">
 
 <div id="white-box"></div>
+
+<div id="url-element"></div>
 
 <h1 id="page-title">
 	<%- page.title %>
@@ -13,36 +14,34 @@
 
 <script src="https://threejs.org/build/three.js"></script>
 
+
+
 <script>
-	// 创建场景
-	var scene = new THREE.Scene();
-      var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.1, 1000 );
-      var renderer = new THREE.WebGLRenderer();
-      renderer.setSize( window.innerWidth, window.innerHeight );
-      document.body.appendChild( renderer.domElement );
+  const url = 'https://www.baidu.com'; // 替换为你的 URL
 
-
-	  // 创建显示器模型
-	  const bodyGeometry = new THREE.BoxGeometry(3, 2, 2);
-  const bodyMaterials = 
-    new THREE.MeshBasicMaterial({ color: 0xff0000 }) // 右侧;
-  const body = new THREE.Mesh(bodyGeometry, bodyMaterials);
-  scene.add(body);
-
-  const screenGeometry = new THREE.BoxGeometry(2.8, 1.8, 2);
-  const screenMaterial = new THREE.MeshBasicMaterial({ color: 0x0000ff });
-  const screen = new THREE.Mesh(screenGeometry, screenMaterial);
-
-  camera.position.z = 5;
-
-
-	// 渲染场景
-	function animate() {
-	  requestAnimationFrame(animate);
-	  body.rotation.y += 0.01;
-	  screen.rotation.y += 0.01;
-
-	  renderer.render(scene, camera);
-	}
-	animate();
-  </script>
+  fetch(url)
+    .then(response => response.text())
+    .then(html => {
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      
+      const title = doc.querySelector('title').innerText;
+      const description = doc.querySelector('meta[name="description"]').getAttribute('content');
+      const fqdn = new URL(url).hostname;
+      
+      const urlElement = document.getElementById('url-element');
+      urlElement.innerHTML = `
+        <div class="left-column">
+          <div class="title">${title}</div>
+          <div class="description">${description}</div>
+          <div class="fqdn">${fqdn}</div>
+        </div>
+        <div class="right-column">
+          <img src="网页图标路径" alt="网页图标">
+        </div>
+      `;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+</script>
