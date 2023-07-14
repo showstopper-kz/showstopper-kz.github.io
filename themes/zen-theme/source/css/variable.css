@@ -16,6 +16,12 @@
     z-index: 1;
 }
 
+#black-box {
+    width: 100%;
+    height: 20px;
+    background-color: black;
+}
+
 
 @font-face {
     font-family: 'SourceHan';
@@ -26,4 +32,10 @@
     font-family: 'Elizabeth';
     src: url('/font/Elizabeth.ttf') format('truetype');
 }
+
+@font-face {
+    font-family: 'DarahRevolusi';
+    src: url('/font/DarahRevolusi-gxMa1.otf') format('opentype');
+}
+
 

@@ -1,6 +1,7 @@
 <footer id="page-footer" >
-	<p>fotter</p>
-	<div id="current-utc-time"></div>
+	<div id="time-box">  
+		<div id="current-utc-time" id="page-footer-text"></div>
+	</div>
 </footer>
 
   <script>
@@ -8,7 +9,7 @@
 	  		var timeElement = document.getElementById('current-utc-time');
       		var currentTime = new Date().toUTCString();
 	  		//console.log(timeElement.textContent);
-	   		timeElement.textContent = 'UTC' + currentTime;
+	   		timeElement.textContent = currentTime;
     	}
 
     // 每秒更新一次时间
