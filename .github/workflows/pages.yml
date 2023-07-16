@@ -18,7 +18,8 @@ jobs:
         env:
           STEAM_KEY: ${{ secrets.STEAM_KEY }}
           STEAM_ID: ${{ secrets.STEAM_ID }}
-      - name: Use Node.js 18.x
+        run: 
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v2
         with:
           node-version: '18'
