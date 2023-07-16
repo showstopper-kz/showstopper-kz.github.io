@@ -1,14 +1,13 @@
 <link rel="stylesheet" href="/css/post.css">
 
-<div id="white-box"></div>
+<div style="opacity: 0; height: 80px; z-index: 10;"></div>
 
 <div id="url-element"></div>
 
-<h1 id="page-title">
-	<%- page.title %>
-</h1>
-
 <div id="page-content">
+	<div id="page-title">
+		<%- page.title %>
+	</div>
 	<%- page.content %>
 </div>
 
