@@ -51,6 +51,7 @@ body{
 #article-list li a {
     border: 0px solid blue;
     text-decoration: none;
+    color: black;
     margin-right: 5px;
     flex-grow: 0.3; 
 }
