@@ -52,7 +52,7 @@ body{
     border: 0px solid blue;
     text-decoration: none;
     margin-right: 5px;
-    flex-grow: 0.2; 
+    flex-grow: 0.3; 
 }
 
 #article-list li .date {
