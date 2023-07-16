@@ -34,6 +34,7 @@ body{
 
 #article-list {
     width: var(--post-content-width);
+    min-height: calc(100% - 40px);
     padding: 10px;
     background-color: white;
 }
@@ -43,13 +44,14 @@ body{
     position: relative;
     display: flex; /* 使用 flexbox 布局 */
     align-items: center; /* 垂直居中对齐 */
-    border: 1px solid blue;
+    border: 0px solid blue;
     padding: 10px;
 }
 
 #article-list li a {
-    border: 1px solid blue;
+    border: 0px solid blue;
     text-decoration: none;
+    margin-right: 5px;
     flex-grow: 0.2; 
 }
 
@@ -122,7 +124,7 @@ header nav a {
 }
 
 header nav a:hover {
-    color: #6f00ff;
+    color: grey;
 }
 
 header {

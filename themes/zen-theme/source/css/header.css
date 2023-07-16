@@ -11,7 +11,7 @@ header nav a {
 }
 
 header nav a:hover {
-    color: #6f00ff;
+    color: grey;
 }
 
 header {
