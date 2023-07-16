@@ -14,11 +14,11 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           # If your repository depends on submodule, please see: https://github.com/actions/checkout
           submodules: recursive
-      - name: Load environment variables
-        env:
-          STEAM_KEY: ${{ secrets.STEAM_KEY }}
-          STEAM_ID: ${{ secrets.STEAM_ID }}
-        run: ""
+      - name: create env file
+        run: |
+          touch .env
+          echo STEAM_KEY: ${{ secrets.STEAM_KEY }} >> .env
+          echo STEAM_ID: ${{ secrets.STEAM_ID }} >> .env
       - name: Use Node.js 16.x
         uses: actions/setup-node@v2
         with:
