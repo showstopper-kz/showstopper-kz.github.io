@@ -23,6 +23,7 @@
     "hexo-renderer-stylus": "^3.0.0",
     "hexo-server": "^3.0.0",
     "hexo-theme-landscape": "^1.0.0",
-    "marked": "^5.1.1"
+    "marked": "^5.1.1",
+    "request": "^2.88.2"
   }
 }
