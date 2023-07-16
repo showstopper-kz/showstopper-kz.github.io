@@ -1,0 +1,91 @@
+<meta charset="UTF-8">
+<header>
+    <div id="header-content">
+        <nav>
+            <a href="/" class="header-link">Home</a>
+            <a href="/archives/" class="header-link">Archives</a>
+            <a href="/game/" class="header-link">Game</a>
+            <a href="/about/" class="header-link">About</a>
+        </nav>
+    </div>
+</header>
+<div id="page-body">
+	<div class="content">
+		<link rel="stylesheet" href="/css/post.css">
+
+<div style="opacity: 0; height: 80px; z-index: 10;"></div>
+
+<div id="url-element"></div>
+
+<div id="page-content">
+	<div id="page-title">
+		安装Arduino并添加ESP8266(NodeMCU)
+	</div>
+	<blockquote>
+<p>本文将会介绍如何安装Arduino IDE，以及添加ESP8266(NodeMCU)开发板</p>
+</blockquote>
+
+      <div class="site-info-box">
+        <div class="left-column">
+          <a href=https://www.arduino.cc class="title">Arduino</a>
+          <div class="description">Open-source electronic prototyping platform enabling users to create interactive electronic objects.</div>
+          <div class="fqdn">www.arduino.cc</div>
+        </div>
+        <div class="right-column">
+          <img class="site-info-img" src="/images/favicon.ico" alt="网页图标">
+        </div>
+      </div>
+    
+      <div class="site-info-box">
+        <div class="left-column">
+          <a href=https://github.com class="title">GitHub</a>
+          <div class="description">GitHub is where over 100 million developers shape the future of software, together. Contribute to the open source community, manage your Git repositories, review code like a pro, t...</div>
+          <div class="fqdn">github.com</div>
+        </div>
+        <div class="right-column">
+          <img class="site-info-img" src="https://github.githubassets.com/favicons/favicon.svg" alt="网页图标">
+        </div>
+      </div>
+    <h2 id="1-安装Arduino-IDE，打开下载地址，选取你使用的平台最新的版本"><a href="#1-安装Arduino-IDE，打开下载地址，选取你使用的平台最新的版本" class="headerlink" title="1.安装Arduino IDE，打开下载地址，选取你使用的平台最新的版本"></a>1.安装Arduino IDE，打开下载地址，选取你使用的平台最新的版本</h2><p><img src=/images/1.PNG ></img><div style="text-align: center;"><p>下载选项</p></div></p>
+<p>  这里要注意，Arduino IDE 分为1.x 和 2.x 两种版本，由于我要在VSCode 中进行Arduino项目开发，而VSCode Arduino插件目前只支持1.x版本 Arudino IDE，所以我选择了1.8 这个版本</p>
+<h2 id="2-添加ESP8266"><a href="#2-添加ESP8266" class="headerlink" title="2. 添加ESP8266"></a>2. 添加ESP8266</h2><p>  安装好Arduino IDE 之后，打开Arduino IDE，依次点击 文件-&gt;首选项</p>
+<p>  在图中标注位置添加ESP8266 Arduino的项目索引地址<a target="_blank" rel="noopener" href="https://arduino.esp8266.com/stable/package_esp8266com_index.json">https://arduino.esp8266.com/stable/package_esp8266com_index.json</a></p>
+<p>  添加成功之后，依次点击工具-&gt;开发板-&gt;开发板管理器 打开开发板管理器，搜索ESP8266并安装，安装好之后在工具-&gt;开发板中选择对应的ESP8266型号就可以了，这里我选择NodeMCU 1.0</p>
+<h2 id="3-在VSCode中配置Arudino"><a href="#3-在VSCode中配置Arudino" class="headerlink" title="3. 在VSCode中配置Arudino"></a>3. 在VSCode中配置Arudino</h2><p>如果你只是想用Arduino IDE自带的文本编辑器进行开发的话，这里就可以结束了，不过Arduino IDE的功能非常单一，没有任何的代码提示功能，所以我选择在VSCode中进行开发</p>
+<p>a. 首先在VSCode中安装Arduino插件</p>
+<p>安装好之后首先要配置Arduino的目录，要不然VSCode会提示找不到调试器</p>
+<p>打开Arudino插件配置页面</p>
+<p>填写Arduino的目录，windows通常在C:\Program Files (x86)\Arduino 这个目录下，然后保存重启VSCode</p>
+<p>到这里就结束了，创建一个.ino的Arduino文件就可以在VSCode中进行开发了，如果你打开一个.ino文件，会发现在VSCode下面那一栏中出现了选择开发板的按钮选择你所使用的开发板就可以了，如果你打开一个示例的.ino文件会发现可能引入头文件那里会标红，至于怎么在VSCode中添加C++库的头文件，后面会介绍</p>
+
+</div>
+
+<script src="https://threejs.org/build/three.js"></script>
+
+
+
+<script>
+</script>
+
+	</div>
+</div>
+<footer id="page-footer" >
+	<div id="time-box">  
+		<div id="current-utc-time" id="page-footer-text"></div>
+	</div>
+</footer>
+
+  <script>
+	    function updateCurrentTime() {
+	  		var timeElement = document.getElementById('current-utc-time');
+      		var currentTime = new Date().toUTCString();
+	  		//console.log(timeElement.textContent);
+	   		timeElement.textContent = currentTime;
+    	}
+
+    // 每秒更新一次时间
+	updateCurrentTime()
+    setInterval(updateCurrentTime, 1000);
+  </script>
+
+

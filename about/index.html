@@ -1,0 +1,80 @@
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/about.css">
+<header>
+    <div id="header-content">
+        <nav>
+            <a href="/" class="header-link">Home</a>
+            <a href="/archives/" class="header-link">Archives</a>
+            <a href="/game/" class="header-link">Game</a>
+            <a href="/about/" class="header-link">About</a>
+        </nav>
+    </div>
+</header>
+
+  <div id="page-body">
+    <div class="content">
+      <div id="white-box"></div>
+      <div class="about-box">
+        <div class="image-container">
+          <img src="/images/macaw.jpg" alt="Image">
+        </div>
+        <div id="personal-info">
+        </div>
+        <div class="link-container">
+          <a href="mailto:zhuyongqi9@gmail.com">
+            <img class="icon-link" src="/images/email.png" alt="Image">
+          </a>
+          <a href="https://twitter.com/Kirin43109156">
+            <img class="icon-link" src="/images/twitter.png" alt="Image">
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+ <footer id="page-footer" >
+	<div id="time-box">  
+		<div id="current-utc-time" id="page-footer-text"></div>
+	</div>
+</footer>
+
+  <script>
+	    function updateCurrentTime() {
+	  		var timeElement = document.getElementById('current-utc-time');
+      		var currentTime = new Date().toUTCString();
+	  		//console.log(timeElement.textContent);
+	   		timeElement.textContent = currentTime;
+    	}
+
+    // 每秒更新一次时间
+	updateCurrentTime()
+    setInterval(updateCurrentTime, 1000);
+  </script>
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+
+<script>
+  let personalInfoContentStr = marked.parse(
+"This is kirin, an interest-driven developer and worked as a software enginner.\n \
+- Interested in system programming now, welcome to discuss 《csapp》 with me \n\
+- Graduated from NUIST 2022 \n\
+- Familiar with microcontroller and web-backend projects...\n"
+);
+
+  let personInfoContent = new DOMParser().parseFromString(personalInfoContentStr, 'text/html');
+
+  let personalInfo = document.getElementById('personal-info');
+  var bodyChildren = Array.from(personInfoContent.body.childNodes);
+  console.log(bodyChildren)
+
+  bodyChildren.forEach(function(child) {
+    personalInfo.appendChild(child);
+  });
+
+
+</script>

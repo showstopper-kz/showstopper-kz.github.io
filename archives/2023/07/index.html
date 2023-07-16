@@ -1,0 +1,92 @@
+<meta charset="UTF-8">
+<header>
+    <div id="header-content">
+        <nav>
+            <a href="/" class="header-link">Home</a>
+            <a href="/archives/" class="header-link">Archives</a>
+            <a href="/game/" class="header-link">Game</a>
+            <a href="/about/" class="header-link">About</a>
+        </nav>
+    </div>
+</header>
+<div id="page-body">
+	<div class="content">
+		<link rel="stylesheet" href="/css/archive.css">
+
+<div style="opacity: 0; height: 40px; z-index: 10;"></div>
+<ul id="article-list"></ul>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var articleList = document.getElementById('article-list');
+
+        fetch('/api/articles')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data)
+            var years = Object.keys(data);
+
+            years.forEach(function(year) {
+                var yearHeading = document.createElement('h2');
+                yearHeading.textContent = year;
+                articleList.appendChild(yearHeading);
+
+                var articles = data[year];
+
+                articles.forEach(function(article) {
+                    var li = document.createElement('li');
+                    var title = document.createElement('a');
+                    title.href = article.url;
+                    title.textContent = article.title;
+                    li.appendChild(title);
+
+                    var hr = document.createElement('hr');
+                    var hrWrapper = document.createElement('div');
+                    hrWrapper.appendChild(hr);
+                    li.appendChild(hrWrapper);
+
+                    var date = document.createElement('span');
+                    date.textContent = article.date;
+                    date.classList.add('date');
+                    li.appendChild(date);
+
+                    articleList.appendChild(li);
+                        
+                    var lineWidth = li.offsetWidth - title.offsetWidth - date.offsetWidth;
+                    hr.style.width = lineWidth + 'px';
+                    hrWrapper.style.width = lineWidth + 'px';
+                });
+            });
+        })
+        .catch(function(error) {
+            console.error('Error fetching articles:', error);
+        });
+    });
+
+</script>
+
+
+	</div>
+</div>
+<footer id="page-footer" >
+	<div id="time-box">  
+		<div id="current-utc-time" id="page-footer-text"></div>
+	</div>
+</footer>
+
+  <script>
+	    function updateCurrentTime() {
+	  		var timeElement = document.getElementById('current-utc-time');
+      		var currentTime = new Date().toUTCString();
+	  		//console.log(timeElement.textContent);
+	   		timeElement.textContent = currentTime;
+    	}
+
+    // 每秒更新一次时间
+	updateCurrentTime()
+    setInterval(updateCurrentTime, 1000);
+  </script>
+
+

@@ -1,0 +1,159 @@
+@import "variable.css";
+
+
+html {
+    height: 100%;
+}
+
+body{
+    margin: 0;
+}
+
+
+#page-body {
+    width: 100%;
+    height: auto;
+    background-color: black;
+    background-repeat: no-repeat;
+    border-bottom: 40px solid #000;
+    background-image: url(/images/anno1800-boat.jpg);
+    background-size: contain;
+    background-size: 100% auto;
+}
+
+.content {
+    font-family: 'SourceHan';
+    font-size:large;
+    margin: 0 auto;
+    width: calc(var(--post-content-width) + 40px);
+    min-height: calc(100% - 40px);
+    padding-bottom: 0px;
+    z-index: 1;
+    padding: 20px;
+}
+
+#article-list {
+    width: var(--post-content-width);
+    min-height: calc(100% - 40px);
+    padding: 10px;
+    background-color: white;
+}
+
+#article-list li {
+    margin-bottom: 5px;
+    position: relative;
+    display: flex; /* 使用 flexbox 布局 */
+    align-items: center; /* 垂直居中对齐 */
+    border: 0px solid blue;
+    padding: 10px;
+}
+
+#article-list li a {
+    border: 0px solid blue;
+    text-decoration: none;
+    margin-right: 5px;
+    flex-grow: 0.2; 
+}
+
+#article-list li .date {
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+#article-list li hr {
+    border: none;
+    border-top: 1px dashed #000;
+    margin: 0;
+    flex-grow: 1; /* 横线自动拉伸填充剩余空间 */
+}
+
+#article-list li div {
+    flex-grow: 1;
+    display: flex; /* 使用 flexbox 布局 */
+    align-items: center; /* 水平居中对齐 */
+}
+
+
+#page-title {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    /* 其他样式属性 */
+}
+
+#page-content {
+    font-size: 16px;
+    color: #666;
+    /* 其他样式属性 */
+}
+
+#page-footer {
+    position: sticky;
+    height: 80px;
+    text-align: center;
+    background-color: #bd2a21;
+    min-width: 100%;
+    background-size: cover;
+    border-radius: 0%; 
+    font-family: 'DarahRevolusi';
+}
+
+#time-box {
+    display: flex;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    height: 100%;
+}
+
+#page-footer-text {
+    margin: 0px;
+}
+
+#current-utc-time {
+    overflow: auto;
+    font-size: 30px;
+}
+
+header nav a {
+    margin-right: 10px;
+    text-decoration: none;
+    font-weight: normal;
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav a:hover {
+    color: grey;
+}
+
+header {
+    background-color: white;
+    height: var(--header-height);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999; /* 可选，用于控制层级 */
+}
+
+#header-content {
+    width: calc(var(--header-content-width) + 40px);
+    margin: 0 auto;
+    text-align: left;
+    top: 0;
+    opacity: 1; 
+    height: var(--header-height);
+    align-items: center;
+    display: flex;
+    background-color: white;
+}
+
+.header-link {
+    display: inline-block;
+    margin-right: 10px;
+    text-decoration: none;
+    color:  black;
+    font-weight: bold;
+    font-size: 1.5em;
+}

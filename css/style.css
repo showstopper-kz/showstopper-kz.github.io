@@ -1,0 +1,120 @@
+@import "variable.css";
+
+
+html {
+    height: 100%;
+}
+
+body{
+    margin: 0;
+}
+
+#page-body {
+    width: 100%;
+    height: auto;
+    background-color: black;
+    background-image: url("/images/anno1800-america.jpeg");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.content {
+    margin: 0 auto;
+    width: calc(40.33% - 2px);
+    min-height: calc(100% - 40px);
+    background-color: white;
+    padding-bottom: 0px;
+    z-index: 1;
+}
+
+
+
+.hidden {
+    display: none;
+}
+
+
+#crt-monitor {
+        margin: 0 auto;
+  background-color: black;
+  border-radius: 10px;
+  width: 80%;
+  padding-top: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.crt-screen {
+  background-color: #000000;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+  height: 100%;
+  padding: 20px;
+}
+
+#http-connect {
+  font-family: 'Courier New', monospace;
+  color: green;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.spinner {
+  display: inline-block;
+  animation: spin 2s infinite linear;
+}
+
+#article-list {
+    padding: 10px;
+}
+
+#article-list li {
+    margin-bottom: 5px;
+    position: relative;
+    display: flex; /* 使用 flexbox 布局 */
+    align-items: center; /* 垂直居中对齐 */
+    border: 1px solid blue;
+    padding: 10px;
+}
+
+#article-list li a {
+    border: 1px solid blue;
+    text-decoration: none;
+    flex-grow: 0.2; 
+}
+
+#article-list li .date {
+    margin-left: 5px;
+    margin-right: 10px;
+}
+
+#article-list li hr {
+    border: none;
+    border-top: 1px dashed #000;
+    margin: 0;
+    flex-grow: 1; /* 横线自动拉伸填充剩余空间 */
+}
+
+#article-list li div {
+    flex-grow: 1;
+    display: flex; /* 使用 flexbox 布局 */
+    align-items: center; /* 水平居中对齐 */
+}
+
+
+#page-title {
+    font-size: 24px;
+    color: #333;
+    font-weight: bold;
+    /* 其他样式属性 */
+}
+
+#page-content {
+    font-size: 16px;
+    color: #666;
+    /* 其他样式属性 */
+}

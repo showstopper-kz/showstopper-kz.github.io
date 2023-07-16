@@ -1,0 +1,59 @@
+@import "variable.css";
+
+header nav a {
+    margin-right: 10px;
+    text-decoration: none;
+    color: #000;
+    font-weight: normal;
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav a:hover {
+    color: grey;
+}
+
+header {
+    background-color: #ffffff; /* 设置背景颜色为不透明的白色 */
+    border: 2px solid blue;
+    height: var(--header-height);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999; /* 可选，用于控制层级 */
+}
+
+#header-content {
+    width: calc(40.33% - 2px);
+    margin: 0 auto;
+    text-align: left;
+    top: 0;
+    background-color: #ffffff; /* 设置背景颜色为不透明的白色 */
+    opacity: 1; 
+    border: 2px solid blue;
+    height: var(--header-height);
+    border-bottom: 3px solid black;
+    align-items: center;
+    display: flex;
+}
+
+.header-link {
+    display: inline-block;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    font-size: 3.5em;
+}
+
+#page-footer {
+    position: sticky;
+    height: 40px;
+    text-align: center;
+}
+
+#current-utc-time {
+    overflow: auto;
+}

@@ -1,0 +1,55 @@
+<meta charset="UTF-8">
+<header>
+    <div id="header-content">
+        <nav>
+            <a href="/" class="header-link">Home</a>
+            <a href="/archives/" class="header-link">Archives</a>
+            <a href="/game/" class="header-link">Game</a>
+            <a href="/about/" class="header-link">About</a>
+        </nav>
+    </div>
+</header>
+<div id="page-body">
+	<div class="content">
+		<link rel="stylesheet" href="/css/post.css">
+
+<div style="opacity: 0; height: 80px; z-index: 10;"></div>
+
+<div id="url-element"></div>
+
+<div id="page-content">
+	<div id="page-title">
+		安装Arduino并添加ESP8266(NodeMCU)
+	</div>
+	
+</div>
+
+<script src="https://threejs.org/build/three.js"></script>
+
+
+
+<script>
+</script>
+
+	</div>
+</div>
+<footer id="page-footer" >
+	<div id="time-box">  
+		<div id="current-utc-time" id="page-footer-text"></div>
+	</div>
+</footer>
+
+  <script>
+	    function updateCurrentTime() {
+	  		var timeElement = document.getElementById('current-utc-time');
+      		var currentTime = new Date().toUTCString();
+	  		//console.log(timeElement.textContent);
+	   		timeElement.textContent = currentTime;
+    	}
+
+    // 每秒更新一次时间
+	updateCurrentTime()
+    setInterval(updateCurrentTime, 1000);
+  </script>
+
+

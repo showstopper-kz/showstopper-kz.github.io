@@ -1,0 +1,127 @@
+<meta charset="UTF-8">
+<header>
+    <div id="header-content">
+        <nav>
+            <a href="/" class="header-link">Home</a>
+            <a href="/archives/" class="header-link">Archives</a>
+            <a href="/game/" class="header-link">Game</a>
+            <a href="/about/" class="header-link">About</a>
+        </nav>
+    </div>
+</header>
+<div id="page-body">
+	<div class="content">
+		<link rel="stylesheet" href="/css/index.css">
+
+<div id="white-box"></div>
+<div id="crt-monitor">
+  <div class="crt-screen">
+	  <pre id="http-connect"></pre>
+    <!-- 内容在 CRT 屏幕中 -->
+  </div>
+</div>
+
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+    const crtMonitor = document.getElementById('crt-monitor');
+    const width = crtMonitor.offsetWidth;
+    console.log(width)
+    crtMonitor.style.height = width*3 / 4 + 'px';
+  });
+
+  var connectElement = document.getElementById('http-connect');
+
+  function createCustomTimeout(millsecond) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('bla bla');
+      resolve();
+    }, millsecond);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", async function() {
+    var words = ["C", "O", "N", "N", "E", "C", "T", " ", "w", "w", "w", ".", "b", "a", "i", "d", "u", ".", "c", "o", "m", ":", "4", "4", "3", " ", "H", "T", "T", "P", "/", "1", ".", "1", "\\r", "\\n", "\n",
+				]
+;
+	let userAgent = navigator.userAgent.substr(0, 30) + "...";
+	let agent = "User-Agent: " + userAgent + "\\r\\n\n";
+	append(words, agent);
+
+	append(words, "Host: www.baidu.com:443\\r\\n\n");
+    var delay = 100; 
+
+	append(words, "X-Forwarded-For: 127.0.0.1\\r\\n\n");
+
+    async function showWord(index, words) {
+      if (index < words.length) {
+        connectElement.textContent += words[index];
+        await createCustomTimeout(delay);
+        await showWord(index + 1, words);
+      }
+    }
+
+    await showWord(0, words);
+    await startSpinner();
+
+    var res = [];
+    append(res, "\n")
+    append(res, "HTTP/1.1 200 Connection established\\r\\n\n")
+    append(res, "Welcome to Kirin's home !!!")
+    await showWord(0, res);
+  });
+
+  	function append(words, str) {
+		for (var i = 0; i < str.length; i++) {
+			var letter = str.charAt(i);
+			words.push(letter);
+		}
+		
+  	}
+
+
+var spinner = null;
+
+async function startSpinner() {
+	spinner = document.createElement('span');
+  spinner.textContent = '|';
+  spinner.classList.add('spinner');
+  console.log(spinner.classList);
+  connectElement.appendChild(spinner);
+  await createCustomTimeout(2000);
+  stopSpinner();
+}
+
+
+function stopSpinner() {
+		console.log(spinner);
+  if (spinner) {
+    console.log(spinner.classList)
+    connectElement.removeChild(spinner);
+    spinner = null;
+  }
+}
+</script>
+	</div>
+</div>
+<footer id="page-footer" >
+	<div id="time-box">  
+		<div id="current-utc-time" id="page-footer-text"></div>
+	</div>
+</footer>
+
+  <script>
+	    function updateCurrentTime() {
+	  		var timeElement = document.getElementById('current-utc-time');
+      		var currentTime = new Date().toUTCString();
+	  		//console.log(timeElement.textContent);
+	   		timeElement.textContent = currentTime;
+    	}
+
+    // 每秒更新一次时间
+	updateCurrentTime()
+    setInterval(updateCurrentTime, 1000);
+  </script>
+
+
