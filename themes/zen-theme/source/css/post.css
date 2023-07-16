@@ -18,29 +18,34 @@ body{
     width: 100%;
     height: auto;
     background-color: black;
-    background-size: cover;
     background-repeat: no-repeat;
     border-bottom: 40px solid #000;
+    background-image: url(/images/anno1800-post.jpg);
+    background-size: 100% auto;
 }
 
 .content {
     margin: 0 auto;
-    width: var(--post-content-width);
+    width: calc(var(--post-content-width) + 40px);
     min-height: calc(100% - 40px);
-    background-color: white;
     padding-bottom: 0px;
     z-index: 1;
-    padding: 20px;
 }
 
 #page-title {
     font-size: 28px;
     color: black;
     font-weight: bold;
+    font-family: 'SourceHan';
+    margin-bottom: 20px;
+    margin-top: 20px;
     /* 其他样式属性 */
 }
 
 #page-content {
+    width: var(--post-content-width);
+    background-color: white;
+    padding: 20px;
     font-size: 16px;
     color: black;
     font-family: 'SourceHan';
@@ -120,7 +125,6 @@ header {
     align-items: center;
     display: flex;
     background-color: white;
-    border-bottom: 10px solid black;
 }
 
 
@@ -177,7 +181,7 @@ header {
 .description {
   font-size: 16px;
   color: #888;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .fqdn {
