@@ -14,28 +14,26 @@ body{
     width: 100%;
     height: auto;
     background-color: black;
-    background-repeat: no-repeat;
-    border-bottom: 40px solid #000;
+
+    /*set background image*/
     background-image: url(/images/anno1800-boat.jpg);
-    background-size: contain;
     background-size: 100% auto;
+    background-repeat: no-repeat;
 }
 
 .content {
     font-family: 'SourceHan';
     font-size:large;
-    margin: 0 auto;
+    margin: 0 auto; /* set content to center */
     width: calc(var(--post-content-width) + 40px);
-    min-height: calc(100% - 40px);
-    padding-bottom: 0px;
     z-index: 1;
-    padding: 20px;
 }
 
 #article-list {
     width: var(--post-content-width);
-    min-height: calc(100% - 40px);
-    padding: 10px;
+    min-height: calc(100% - var(--header-height) - 20px - 20px - 40px); /*make sure height content fill the page*/
+    padding: 20px;
+    margin: 0px;
     background-color: white;
 }
 
@@ -44,8 +42,7 @@ body{
     position: relative;
     display: flex; /* 使用 flexbox 布局 */
     align-items: center; /* 垂直居中对齐 */
-    border: 0px solid blue;
-    padding: 10px;
+    border: 1px solid blue;
 }
 
 #article-list li a {
@@ -56,9 +53,12 @@ body{
     flex-grow: 0.3; 
 }
 
+#article-list li a:hover {
+    color: #999;
+}
+
 #article-list li .date {
     margin-left: 5px;
-    margin-right: 10px;
 }
 
 #article-list li hr {
@@ -71,48 +71,7 @@ body{
 #article-list li div {
     flex-grow: 1;
     display: flex; /* 使用 flexbox 布局 */
-    align-items: center; /* 水平居中对齐 */
-}
-
-
-#page-title {
-    font-size: 24px;
-    color: #333;
-    font-weight: bold;
-    /* 其他样式属性 */
-}
-
-#page-content {
-    font-size: 16px;
-    color: #666;
-    /* 其他样式属性 */
-}
-
-#page-footer {
-    position: sticky;
-    height: 80px;
-    text-align: center;
-    background-color: #bd2a21;
-    min-width: 100%;
-    background-size: cover;
-    border-radius: 0%; 
-    font-family: 'DarahRevolusi';
-}
-
-#time-box {
-    display: flex;
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
-    height: 100%;
-}
-
-#page-footer-text {
-    margin: 0px;
-}
-
-#current-utc-time {
-    overflow: auto;
-    font-size: 30px;
+    align-items: center; /* 垂直居中对齐 */
 }
 
 header nav a {
