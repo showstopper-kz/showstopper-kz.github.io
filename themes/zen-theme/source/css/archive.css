@@ -42,7 +42,7 @@ body{
     position: relative;
     display: flex; /* 使用 flexbox 布局 */
     align-items: center; /* 垂直居中对齐 */
-    border: 1px solid blue;
+    border: 0px solid blue;
 }
 
 #article-list li a {
@@ -61,30 +61,16 @@ body{
     margin-left: 5px;
 }
 
-#article-list li hr {
-    border: none;
-    border-top: 1px dashed #000;
-    margin: 0;
-    flex-grow: 1; /* 横线自动拉伸填充剩余空间 */
-}
-
 #article-list li div {
     flex-grow: 1;
     display: flex; /* 使用 flexbox 布局 */
     align-items: center; /* 垂直居中对齐 */
 }
 
-header nav a {
-    margin-right: 10px;
-    text-decoration: none;
-    font-weight: normal;
-	display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header nav a:hover {
-    color: grey;
+#article-list li hr {
+    border: 1px dashed #000;
+    margin: 0;
+    flex-grow: 1; /* 横线自动拉伸填充剩余空间 */
 }
 
 header {
@@ -109,11 +95,17 @@ header {
     background-color: white;
 }
 
-.header-link {
-    display: inline-block;
+header nav a {
     margin-right: 10px;
+    display: inline-block;
+    align-items: center;
+    font-family: 'SourceHan';
+    font-weight: normal;
+    font-size: 1.5em;
     text-decoration: none;
     color:  black;
-    font-weight: bold;
-    font-size: 1.5em;
+}
+
+header nav a:hover {
+    color: grey;
 }
