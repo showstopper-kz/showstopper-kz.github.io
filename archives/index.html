@@ -13,8 +13,10 @@
 	<div class="content">
 		<link rel="stylesheet" href="/css/archive.css">
 
-<div style="opacity: 0; height: 40px; z-index: 10;"></div>
+<div id="white-box"></div>
+<div id="transparent-box" style="height: 20px;"></div>
 <ul id="article-list"></ul>
+<div id="transparent-box" style="height: 20px;"></div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -70,23 +72,3 @@
 
 	</div>
 </div>
-<footer id="page-footer" >
-	<div id="time-box">  
-		<div id="current-utc-time" id="page-footer-text"></div>
-	</div>
-</footer>
-
-  <script>
-	    function updateCurrentTime() {
-	  		var timeElement = document.getElementById('current-utc-time');
-      		var currentTime = new Date().toUTCString();
-	  		//console.log(timeElement.textContent);
-	   		timeElement.textContent = currentTime;
-    	}
-
-    // 每秒更新一次时间
-	updateCurrentTime()
-    setInterval(updateCurrentTime, 1000);
-  </script>
-
-
