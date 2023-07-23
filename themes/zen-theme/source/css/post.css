@@ -32,16 +32,6 @@ body{
     z-index: 1;
 }
 
-#page-title {
-    font-size: 28px;
-    color: black;
-    font-weight: bold;
-    font-family: 'SourceHan';
-    margin-bottom: 20px;
-    margin-top: 20px;
-    /* 其他样式属性 */
-}
-
 #page-content {
     width: var(--post-content-width);
     background-color: white;
@@ -49,6 +39,15 @@ body{
     font-size: 16px;
     color: black;
     font-family: 'SourceHan';
+    /* 其他样式属性 */
+}
+
+#page-title {
+    font-size: 28px;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 20px;
     /* 其他样式属性 */
 }
 
@@ -63,46 +62,6 @@ blockquote {
     padding: 10px;
     padding-left: 15px;
     font-weight: normal;
-}
-
-#page-footer {
-    position: sticky;
-    height: 80px;
-    text-align: center;
-    background-color: #bd2a21;
-    min-width: 100%;
-    background-size: cover;
-    border-radius: 0%; 
-    font-family: 'DarahRevolusi';
-}
-
-#time-box {
-    display: flex;
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
-    height: 100%;
-}
-
-#page-footer-text {
-    margin: 0px;
-}
-
-#current-utc-time {
-    overflow: auto;
-    font-size: 30px;
-}
-
-header nav a {
-    margin-right: 10px;
-    text-decoration: none;
-    font-weight: normal;
-	display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header nav a:hover {
-    color: grey;
 }
 
 header {
@@ -120,21 +79,25 @@ header {
     margin: 0 auto;
     text-align: left;
     top: 0;
-    opacity: 1; 
     height: var(--header-height);
     align-items: center;
     display: flex;
     background-color: white;
 }
 
-
-.header-link {
-    display: inline-block;
+header nav a {
     margin-right: 10px;
+    display: inline-block;
+    align-items: center;
+    font-family: 'SourceHan';
+    font-weight: normal;
+    font-size: 1.5em;
     text-decoration: none;
     color:  black;
-    font-weight: bold;
-    font-size: 1.5em;
+}
+
+header nav a:hover {
+    color: grey;
 }
 
 .site-info-box{
