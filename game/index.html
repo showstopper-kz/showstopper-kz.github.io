@@ -11,16 +11,16 @@
     </div>
 </header>
 
-	<div id="page-body">
-		<div class="content">
-			<div id="white-box"></div>
-			<div id="game-title">I play these games ...</div>
-			<div id="game-content">
-			</div>
+<div id="page-body">
+	<div class="content">
+		<div id="white-box"></div>
+		<div id="game-title">I play these games ...</div>
+		<div id="game-content">
 		</div>
 	</div>
+</div>
 
-	<footer id="page-footer" >
+<footer id="page-footer" >
 	<div id="time-box">  
 		<div id="current-utc-time" id="page-footer-text"></div>
 	</div>
@@ -41,82 +41,84 @@
 
 
 
+<script>
+	document.addEventListener('DOMContentLoaded', function () {
+		var gameBox = document.getElementById('game-content')
+		fetch('/api/gameInfo')
+			.then(function (response) {
+				return response.json();
+			})
+			.then(function (data) {
+				console.log(data)
+				data.sort((game1, game2) => { 
+					return game2.playtime_forever - game1.playtime_forever
+				})
+				let gameInfoBoxRow;
+				let cnt = 0;
+				for (let i in data) {
+					let game = data[i];
+					if (game.header_image) {
+						if (cnt == 0) {
+							gameInfoBoxRow = document.createElement('div')
+							gameInfoBoxRow.id = 'game-info-box-row'
 
-		<script>
-			document.addEventListener('DOMContentLoaded', function () {
-				var gameBox = document.getElementById('game-content')
-				fetch('/api/gameInfo')
-					.then(function (response) {
-						return response.json();
-					})
-					.then(function (data) {
-						console.log(data)
-						let gameInfoBoxRow;
-						let cnt = 0;
-						for (let i in data) {
-							let game = data[i];
-							if (game.header_image) {
-								if (cnt == 0) {
-									gameInfoBoxRow = document.createElement('div')
-									gameInfoBoxRow.id = 'game-info-box-row'
+							let gameInfoBox = document.createElement('div');
+							gameInfoBox.id = 'game-info-box';
 
-									let gameInfoBox = document.createElement('div');
-									gameInfoBox.id = 'game-info-box';
+							let row2 = document.createElement('div');
+							row2.id = 'row2';
+							let image = document.createElement('img');
+							image.src = game.header_image;
+							row2.append(image);
+							gameInfoBox.appendChild(row2);
 
-									let row2 = document.createElement('div');
-									row2.id = 'row2';
-									let image = document.createElement('img');
-									image.src = game.header_image;
-									row2.append(image);
-									gameInfoBox.appendChild(row2);
+							let row1 = document.createElement('div');
+							row1.id = 'row1';
+							let link = document.createElement('a');
+							link.textContent = game.name;
+							link.href = 'https://store.steampowered.com/app/' + game.appid
+							row1.appendChild(link);
+							let span = document.createElement('span');
+							let hours = game.playtime_forever / 60
+							span.textContent = '游玩时长: ' + hours.toFixed(2) + 'h';
+							row1.appendChild(span);
+							gameInfoBox.appendChild(row1);
 
-									let row1 = document.createElement('div');
-									row1.id = 'row1';
-									let link = document.createElement('a');
-									link.textContent = game.name;
-									link.href = 'https://store.steampowered.com/app/' + game.appid
-									row1.appendChild(link);
-									let span = document.createElement('span');
-									let hours = game.playtime_forever / 60
-									span.textContent = '游玩时长: ' + hours.toFixed(2) + 'h';
-									row1.appendChild(span);
-									gameInfoBox.appendChild(row1);
+							gameInfoBoxRow.appendChild(gameInfoBox)
+							cnt++
+						} else {
+							let gameInfoBox = document.createElement('div');
+							gameInfoBox.id = 'game-info-box';
 
-									gameInfoBoxRow.appendChild(gameInfoBox)
-									cnt++
-								} else {
-									let gameInfoBox = document.createElement('div');
-									gameInfoBox.id = 'game-info-box';
+							let row2 = document.createElement('div');
+							row2.id = 'row2';
+							let image = document.createElement('img');
+							image.src = game.header_image;
+							row2.append(image);
+							gameInfoBox.appendChild(row2);
 
-									let row2 = document.createElement('div');
-									row2.id = 'row2';
-									let image = document.createElement('img');
-									image.src = game.header_image;
-									row2.append(image);
-									gameInfoBox.appendChild(row2);
+							let row1 = document.createElement('div');
+							row1.id = 'row1';
+							let link = document.createElement('a');
+							link.textContent = game.name;
+							link.href = 'https://store.steampowered.com/app/' + game.appid
+							row1.appendChild(link);
+							let span = document.createElement('span');
+							let hours = game.playtime_forever / 60
+							span.textContent = '游玩时长: ' + hours.toFixed(2) + 'h';
+							row1.appendChild(span);
+							gameInfoBox.appendChild(row1);
 
-									let row1 = document.createElement('div');
-									row1.id = 'row1';
-									let link = document.createElement('a');
-									link.textContent = game.name;
-									link.href = 'https://store.steampowered.com/app/' + game.appid
-									row1.appendChild(link);
-									let span = document.createElement('span');
-									let hours = game.playtime_forever / 60
-									span.textContent = '游玩时长: ' + hours.toFixed(2) + 'h';
-									row1.appendChild(span);
-									gameInfoBox.appendChild(row1);
-
-									gameInfoBoxRow.appendChild(gameInfoBox);
-									cnt++
-									if (cnt == 2) {
-										cnt = 0
-										gameBox.appendChild(gameInfoBoxRow)
-									}
-								}
+							gameInfoBoxRow.appendChild(gameInfoBox);
+							cnt++
+							if (cnt == 2) {
+								cnt = 0
+								gameBox.appendChild(gameInfoBoxRow)
 							}
 						}
-					})
-			});
+					}
+				}
+			})
+	});
 
-		</script>
+	</script>

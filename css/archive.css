@@ -50,7 +50,6 @@ body{
     text-decoration: none;
     color: black;
     margin-right: 5px;
-    flex-grow: 0.3; 
 }
 
 #article-list li a:hover {
@@ -88,7 +87,6 @@ header {
     margin: 0 auto;
     text-align: left;
     top: 0;
-    opacity: 1; 
     height: var(--header-height);
     align-items: center;
     display: flex;
