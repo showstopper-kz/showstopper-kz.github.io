@@ -1,5 +1,6 @@
 const https = require('https');
 const cheerio = require('cheerio')
+const gameInfo = require('./gameInfo')
 
 const siteMap = {
   'arduino': 'www.arduino.cc',
@@ -7,7 +8,7 @@ const siteMap = {
 }
 
 hexo.extend.generator.register('articles-json', function(locals) {
-    console.log('gen')
+    console.log('gen articles')
     var articlesByYear = {};
 
     locals.posts.forEach(function(post) {
@@ -32,5 +33,13 @@ hexo.extend.generator.register('articles-json', function(locals) {
     return {
       path: 'api/articles',
       data: JSON.stringify(result)
+    };
+});
+
+hexo.extend.generator.register('gameInfo-json',  function(locals) {
+    console.log('gen gameInfo')
+    return {
+      path: 'api/gameInfo',
+      data: gameInfo
     };
 });

@@ -1,3 +1,4 @@
+const fs = require('fs')
 const https = require('https');
 const cheerio = require('cheerio')
 require('dotenv').config()
@@ -6,18 +7,38 @@ var request = require('request');
 
 class SteamGameInfo {
 	personalGameInfo = [];
-	async requestJson(options) {
+
+	wait(s) {
+    	return new Promise(resolve =>setTimeout(() => resolve(), s * 1000));
+	};
+
+	async requestBase(options) {
 		return new Promise((resolve, reject) => {
 			request(options, (error, response, body) => {
 				if (error) {
 					console.log(error)
 					reject(error);
 				} else {
-					let jsonBody = JSON.parse(body)
-					resolve(jsonBody)
+					resolve(response)
 				}
 			});
 		});
+	}
+
+	async requestJson(url) {
+		for(let i =0; i<3;i++) {
+			try {
+				console.debug('retry time: '+i)
+				let res = await this.requestBase(url)
+				if (res.statusCode == 200) {
+					return JSON.parse(res.body);
+				}
+			} catch (error) {
+				console.log(error);		
+			}
+			await this.wait(3)
+		}
+		throw new Error('request failed')
 	}
 
 	async getOwnedGames() {
@@ -61,15 +82,16 @@ class SteamGameInfo {
 	}
 }
 
-
-hexo.extend.generator.register('gameInfo-json', async function(locals) {
+async function main() {
 	let gameInfo = new SteamGameInfo();
-	await gameInfo.getOwnedGames();
+	await gameInfo.getOwnedGames()
 	await gameInfo.getGameDeatails();
-	gameInfo.personalGameInfo.sort((a,b) => a.playtime_forever < b.playtime_forever ? 1:-1);
 
-    return {
-      path: 'api/gameInfo',
-      data: JSON.stringify(gameInfo.personalGameInfo)
-    };
-});
+	const content = `const map = ${JSON.stringify(gameInfo.personalGameInfo)}\nmodule.exports = map`
+	let filepath = './scripts/gameInfo.js'
+    fs.truncateSync(filepath, 0);
+    console.log(filepath)
+    fs.writeFileSync(filepath, content);
+}
+
+main()
