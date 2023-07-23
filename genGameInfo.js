@@ -64,6 +64,7 @@ class SteamGameInfo {
 	}
 
 	async getGameDeatails() {
+		let jobArr = []
 		for (let game of this.personalGameInfo) {
 			console.log(game)
 			var options = {
@@ -73,8 +74,15 @@ class SteamGameInfo {
 					'Cookie': 'browserid=3021402653685138588; steamCountry=HK%7C261f8d9a4c92df727dd7424a1c9f56c4'
 				}
 			};
-			let gameDetails = await this.requestJson(options); 
-			if (gameDetails[game.appid].success === true) {
+			jobArr.push(this.requestJson(options)); 
+		}
+		
+		const res =  await Promise.all(jobArr)
+
+		for (let i = 0; i < this.personalGameInfo.length; i++) {
+			let gameDetails = res[i];
+			let game = this.personalGameInfo[i];
+			if (gameDetails[game.appid]['success'] === true) {
 				game.header_image = gameDetails[game.appid].data.header_image;
 				console.log(game)
 			}
